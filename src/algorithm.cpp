@@ -58,7 +58,13 @@ float Algorithm::fcfs(Queue & queue) {
       t += 1;
   }
 
-  return t / n;
+  float sumT = 0;
+
+  for (unsigned int i = 0; i < queue.getQueue().size(); i++) {
+    sumT += queue.getQueue().at(i).getTurnaround();
+  }
+
+  return sumT / queue.getQueue().size();
 }
 
 float Algorithm::priority(Queue & queue) {
@@ -102,7 +108,13 @@ float Algorithm::priority(Queue & queue) {
       t += 1;
   }
 
-  return t / n;
+  float sumT = 0;
+
+  for (unsigned int i = 0; i < queue.getQueue().size(); i++) {
+    sumT += queue.getQueue().at(i).getTurnaround();
+  }
+
+  return sumT / queue.getQueue().size();
 }
 
 float Algorithm::sjn(Queue & queue) {
@@ -146,5 +158,11 @@ float Algorithm::sjn(Queue & queue) {
       t += 1;
   }
 
-  return t / n;
+  float sumT = 0;
+
+  for (unsigned int i = 0; i < queue.getQueue().size(); i++) {
+    sumT += queue.getQueue().at(i).getTurnaround();
+  }
+
+  return sumT / queue.getQueue().size();
 }

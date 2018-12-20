@@ -5,7 +5,7 @@ using namespace std;
 #include <iomanip>
 
 static unsigned int columnSize = 13;
-static unsigned int algorithm = 2;
+static unsigned int algorithm = 0;
 
 int main () {
   Queue queue(4);
@@ -19,21 +19,23 @@ int main () {
   queue.add(p3);
   queue.add(p4);
 
+  float avgT = 0;
+
   switch (algorithm) {
     case 0:
-      Algorithm::fcfs(queue);
+      avgT = Algorithm::fcfs(queue);
       cout << "FCFS" << endl;
       break;
     case 1:
-      Algorithm::priority(queue);
+      avgT = Algorithm::priority(queue);
       cout << "PRIORITY" << endl;
       break;
     case 2:
-      Algorithm::sjn(queue);
+      avgT = Algorithm::sjn(queue);
       cout << "SJN" << endl;
       break;
     default:
-      Algorithm::fcfs(queue);
+      avgT = Algorithm::fcfs(queue);
       cout << "FCFS" << endl;
   }
 
@@ -56,4 +58,6 @@ int main () {
   for (unsigned int i = 0; i < 4; i++)
     cout << "PID " << queue.getQueue().at(i).getId() << " ";
   cout << endl;
+
+  cout << "Average turnaround time: " << avgT << endl;
 }
